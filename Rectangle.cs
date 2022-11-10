@@ -4,7 +4,7 @@ namespace JsonFactory;
 
 
 
-class Rectangle : Shape
+public class Rectangle : Shape
 {
     readonly int width;
     readonly int height;
