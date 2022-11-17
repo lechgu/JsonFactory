@@ -40,7 +40,7 @@ public class Circle : Shape
 
 public class CircleJsonHandler : IJsonHandler
 {
-    public bool TryRead(Utf8JsonReader reader, Dictionary<string, JsonElement> dict, out object obj)
+    public bool TryRead(Utf8JsonReader reader, Dictionary<string, JsonElement> dict, JsonSerializerOptions opts, out object obj)
     {
         var radiusElem = dict.GetValueOrDefault("radius");
         if (radiusElem.ValueKind == JsonValueKind.Number)

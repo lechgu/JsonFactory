@@ -50,7 +50,7 @@ public class Rectangle : Shape
 
 public class RectangleJsonHandler : IJsonHandler
 {
-    public bool TryRead(Utf8JsonReader reader, Dictionary<string, JsonElement> dict, out object obj)
+    public bool TryRead(Utf8JsonReader reader, Dictionary<string, JsonElement> dict, JsonSerializerOptions opts, out object obj)
     {
         var widthElem = dict.GetValueOrDefault("width");
         var heightElem = dict.GetValueOrDefault("height");

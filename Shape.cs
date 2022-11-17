@@ -9,7 +9,7 @@ public abstract class Shape
 
 public class ShapeJsonHandler : IJsonHandler
 {
-    public bool TryRead(Utf8JsonReader reader, Dictionary<string, JsonElement> dict, out object obj)
+    public bool TryRead(Utf8JsonReader reader, Dictionary<string, JsonElement> dict, JsonSerializerOptions opts, out object obj)
     {
         obj = null;
         return false;

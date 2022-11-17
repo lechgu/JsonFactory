@@ -22,14 +22,14 @@ public class UniversalConverter : JsonConverter<object>
     public override object Read(
         ref Utf8JsonReader reader,
         Type typeToConvert,
-        JsonSerializerOptions options)
+        JsonSerializerOptions opts)
     {
         var dict = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(ref reader);
         var typeName = dict["__type"].ToString();
         var jsonHandler = knownReaders.GetValueOrDefault(typeName);
         if (jsonHandler is not null)
         {
-            if (jsonHandler.TryRead(reader, dict, out var obj))
+            if (jsonHandler.TryRead(reader, dict, opts, out var obj))
             {
                 return obj;
             }

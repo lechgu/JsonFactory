@@ -50,3 +50,6 @@ var opts = new JsonSerializerOptions
 var pickyGeometry = new PickyGeometry(Circle.WithRadius(42), Rectangle.WithWidthAndHeight(1, 2));
 var json = JsonSerializer.Serialize(pickyGeometry, opts);
 Console.WriteLine(json);
+
+pickyGeometry = JsonSerializer.Deserialize<PickyGeometry>(json, opts);
+Console.WriteLine(pickyGeometry);
