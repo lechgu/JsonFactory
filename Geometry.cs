@@ -1,11 +1,12 @@
 namespace JsonFactory;
 
-public class ComplexObject
+public class Geometry
 {
-    public ComplexObject()
+    public Geometry()
     {
 
     }
     public Shape Shape1 { get; set; } = Circle.WithRadius(42);
     public Shape Shape2 { get; set; } = Rectangle.WithWidthAndHeight(17, 25);
+    public Shape[] ExtraShapes { get; set; } = new[] { Circle.WithRadius(1) };
 }

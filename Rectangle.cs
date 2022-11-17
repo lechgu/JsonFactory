@@ -9,6 +9,16 @@ public class Rectangle : Shape
     readonly int width;
     readonly int height;
 
+    public int Width
+    {
+        get => width;
+    }
+
+    public int Height
+    {
+        get => height;
+    }
+
     Rectangle(int width, int height)
     {
         this.width = width;
@@ -35,5 +45,31 @@ public class Rectangle : Shape
             return WithWidthAndHeight(width, height);
         }
         return null;
+    }
+}
+
+public class RectangleJsonHandler : IJsonHandler
+{
+    public bool TryRead(Utf8JsonReader reader, Dictionary<string, JsonElement> dict, out object obj)
+    {
+        var widthElem = dict.GetValueOrDefault("width");
+        var heightElem = dict.GetValueOrDefault("height");
+        if (widthElem.ValueKind == JsonValueKind.Number && heightElem.ValueKind == JsonValueKind.Number)
+        {
+            if (widthElem.TryGetInt32(out int width) && heightElem.TryGetInt32(out int height))
+            {
+                obj = Rectangle.WithWidthAndHeight(width, height);
+                return true;
+            }
+        }
+        obj = null;
+        return false;
+    }
+
+    public void Write(Utf8JsonWriter writer, object obj, JsonSerializerOptions opts)
+    {
+        var rect = obj as Rectangle;
+        writer.WriteNumber("width", rect.Width);
+        writer.WriteNumber("height", rect.Height);
     }
 }
