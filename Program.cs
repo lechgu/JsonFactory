@@ -38,11 +38,15 @@ var opts = new JsonSerializerOptions
 //     Console.WriteLine(shape);
 // }
 
-var geometry = new Geometry();
-var json = JsonSerializer.Serialize(geometry, opts);
-Console.WriteLine(json);
+// var geometry = new Geometry();
+// var json = JsonSerializer.Serialize(geometry, opts);
+// Console.WriteLine(json);
 
-var c = JsonSerializer.Deserialize<Geometry>(json, opts);
-Console.WriteLine(c.Shape1);
-Console.WriteLine(c.Shape2);
-Console.WriteLine($"# of extra shapes: {c.ExtraShapes.Length}");
+// var c = JsonSerializer.Deserialize<Geometry>(json, opts);
+// Console.WriteLine(c.Shape1);
+// Console.WriteLine(c.Shape2);
+// Console.WriteLine($"# of extra shapes: {c.ExtraShapes.Length}");
+
+var pickyGeometry = new PickyGeometry(Circle.WithRadius(42), Rectangle.WithWidthAndHeight(1, 2));
+var json = JsonSerializer.Serialize(pickyGeometry, opts);
+Console.WriteLine(json);

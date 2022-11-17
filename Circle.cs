@@ -2,7 +2,7 @@ using System.Text.Json;
 
 namespace JsonFactory;
 
-class Circle : Shape
+public class Circle : Shape
 {
     readonly int radius;
 

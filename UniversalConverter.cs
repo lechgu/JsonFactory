@@ -10,7 +10,8 @@ public class UniversalConverter : JsonConverter<object>
     {
         { typeof(Shape), new ShapeJsonHandler()},
         { typeof(Circle), new CircleJsonHandler()},
-        { typeof(Rectangle), new RectangleJsonHandler()}
+        { typeof(Rectangle), new RectangleJsonHandler()},
+        { typeof(PickyGeometry), new PickyGeometryJsonHandler()}
     };
 
     private readonly static Dictionary<string, IJsonHandler> knownReaders = knownWriters.ToDictionary(x => x.Key.ToString(), x => x.Value);
